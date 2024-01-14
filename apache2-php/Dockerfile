@@ -35,3 +35,9 @@ RUN a2ensite javier-moreno-phpmyadmin
 
 # Reiniciar Apache
 RUN service apache2 restart
+
+# Copiar archivos de contraseñas
+COPY ./certs /etc/apache2/ssl
+
+# habilitar el módulo sslhabilitar el módulo sslS
+RUN a2enmod ssl
