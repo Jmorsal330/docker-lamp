@@ -13,9 +13,9 @@
 ## 3º Paso
 ### Modificar el index.html:
 
-![Alt text](image.png)
+![Alt text](image-5.png)
 
 ## 4º Paso
 ### Añadir un nuevo usuario:
 
-![Alt text](image-1.png)
+![Alt text](image-6.png)
