@@ -1,4 +1,4 @@
-FROM php:8.1.0-apache
+FROM php:apache
 
 # Para evitar interacciones durante la instalación de paquetes, si no se pone cuando la terminal pregunte una confirmación se interrumpe la creación de la imagen.
 ARG DEBIAN_FRONTEND=noninteractive
@@ -25,3 +25,13 @@ COPY ./etc/apache2/.htpasswd /etc/apache2/.htpasswd
 
 # Habilitar los virtual hosts
 RUN a2ensite intranet.conf
+
+# Habilitar módulos de proxy inverso
+RUN a2enmod proxy proxy_http
+
+# Copiar y activar la configuración de phpMyAdmin
+COPY apache2-php/conf/javier-moreno-phpmyadmin.conf /etc/apache2/sites-available/
+RUN a2ensite javier-moreno-phpmyadmin
+
+# Reiniciar Apache
+RUN service apache2 restart
